@@ -6,9 +6,19 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
 
 [node name="Main" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_0wfyh")
 
+[node name="Man4" parent="." instance=ExtResource("1_o5qli")]
+position = Vector2(470, 260)
+
+[node name="Man2" parent="." instance=ExtResource("1_o5qli")]
+position = Vector2(470, 260)
+
 [node name="Man" parent="." instance=ExtResource("1_o5qli")]
+position = Vector2(235, 145)
+
+[node name="Man3" parent="." instance=ExtResource("1_o5qli")]
 position = Vector2(235, 130)
 
 [node name="CongregationArea2D" type="Area2D" parent="."]

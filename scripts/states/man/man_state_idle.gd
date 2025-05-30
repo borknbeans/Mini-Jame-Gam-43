@@ -8,6 +8,7 @@ extends ManState
 ## is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(previous_state_path: String, data := {}) -> void:
 	man.velocity = Vector2.ZERO
+	man.animation_player.stop()
 	
 	var idle_time: float = randf_range(min_idle_time, max_idle_time)
 	idle_timer.start(idle_time)

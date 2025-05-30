@@ -7,8 +7,7 @@ var random_point: Vector2
 ## is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(previous_state_path: String, data := {}) -> void:
 	random_point = _get_random_point()
-	print(random_point)
-	pass
+	man.animation_player.play("move")
 
 ## Called by the state machine on the engine's main loop tick.
 func physics_update(_delta: float) -> void:

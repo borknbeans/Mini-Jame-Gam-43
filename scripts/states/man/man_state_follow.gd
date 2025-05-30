@@ -1,6 +1,11 @@
 class_name ManStateFollow
 extends ManState
 
+## Called by the state machine upon changing the active state. The `data` parameter
+## is a dictionary with arbitrary data the state can use to initialize itself.
+func enter(previous_state_path: String, data := {}) -> void:
+	man.animation_player.play("move")
+
 ## Called by the state machine on the engine's main loop tick.
 func physics_update(_delta: float) -> void:
 	var direction = man.position.direction_to(follow_point)
