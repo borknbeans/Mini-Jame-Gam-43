@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Utility="*res://scripts/util/Utility.gd"
 
+[global_group]
+
+congregation_area=""
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
