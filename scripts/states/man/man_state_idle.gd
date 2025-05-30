@@ -7,7 +7,7 @@ extends ManState
 ## Called by the state machine upon changing the active state. The `data` parameter
 ## is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(previous_state_path: String, data := {}) -> void:
-	# TODO: Set velocity to zero
+	man.velocity = Vector2.ZERO
 	
 	var idle_time: float = randf_range(min_idle_time, max_idle_time)
 	idle_timer.start(idle_time)
@@ -17,7 +17,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 
 ## Called by the state machine on the engine's main loop tick.
 func physics_update(_delta: float) -> void:
-	if follow_point != null:
+	if follow_point != Vector2.ZERO:
 		finished.emit(FOLLOW)
 
 ## Called by the state machine before changing the active state. Use this function

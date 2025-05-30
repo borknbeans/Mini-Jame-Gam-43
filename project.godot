@@ -14,3 +14,7 @@ config/name="Mini Jame Gam 43"
 run/main_scene="uid://cnwb0roi37ay3"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Utility="*res://scripts/util/Utility.gd"
