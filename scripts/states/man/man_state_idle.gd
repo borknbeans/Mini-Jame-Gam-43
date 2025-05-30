@@ -7,6 +7,8 @@ extends ManState
 ## Called by the state machine upon changing the active state. The `data` parameter
 ## is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(previous_state_path: String, data := {}) -> void:
+	# TODO: Set velocity to zero
+	
 	var idle_time: float = randf_range(min_idle_time, max_idle_time)
 	idle_timer.start(idle_time)
 	
