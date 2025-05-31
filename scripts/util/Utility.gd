@@ -2,6 +2,9 @@ extends Node
 
 signal reset_level
 signal level_change(level: int)
+signal drop_off_tutorial_signal
+
+var first_time_drop_off: bool = true
 
 enum COLORS {
 	NEUTRAL,

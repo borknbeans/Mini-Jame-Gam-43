@@ -14,14 +14,27 @@ extends Node2D
 @onready var game_over: Label = $GameOver
 @onready var tutorial_text_1: Label = $TutorialText1
 @onready var tutorial_button: Button = $TutorialButton
+@onready var brush: Brush = $Brush
+@onready var clear_color: MeshInstance2D = $ClearColor
+@onready var red_color: MeshInstance2D = $RedColor
+@onready var yellow_color: MeshInstance2D = $YellowColor
+@onready var blue_color: MeshInstance2D = $BlueColor
+@onready var tutorial_text_2: Label = $TutorialText2
+@onready var tutorial_text_3: Label = $TutorialText3
+@onready var tutorial_text_4: Label = $TutorialText4
 
 var max_people: int = 25
 var time: int = 30
 var level: int = 1
 var tutorial: bool = false
+var tutorial_step: int = 1
 
 func _ready() -> void:
 	game_timer.start()
+	
+	brush.color_changed.connect(_on_brush_color_changed)
+	Utility.drop_off_tutorial_signal.connect(_on_first_time_drop_off)
+	_on_brush_color_changed(0)
 	
 	await get_tree().create_timer(1).timeout
 	tutorial_text_1.show()
@@ -40,6 +53,33 @@ func _process(delta: float) -> void:
 	
 	timer_label.text = str((int)(game_timer.time_left))
 
+func _on_brush_color_changed(color: int) -> void:
+	var x = 480
+	var y = 650
+	
+	var sep = 60
+	
+	match (color):
+		0:
+			clear_color.position = Vector2(x, y - 20)
+			red_color.position = Vector2(x + (60 * 1), y)
+			yellow_color.position = Vector2(x + (60 * 2), y)
+			blue_color.position = Vector2(x + (60 * 3), y)
+		1:
+			clear_color.position = Vector2(x, y)
+			red_color.position = Vector2(x + (60 * 1), y - 20)
+			yellow_color.position = Vector2(x + (60 * 2), y)
+			blue_color.position = Vector2(x + (60 * 3), y)
+		2:
+			clear_color.position = Vector2(x, y)
+			red_color.position = Vector2(x + (60 * 1), y)
+			yellow_color.position = Vector2(x + (60 * 2), y - 20)
+			blue_color.position = Vector2(x + (60 * 3), y)
+		3:
+			clear_color.position = Vector2(x, y)
+			red_color.position = Vector2(x + (60 * 1), y)
+			yellow_color.position = Vector2(x + (60 * 2), y)
+			blue_color.position = Vector2(x + (60 * 3), y - 20)
 
 func _on_button_pressed() -> void:
 	button.hide()
@@ -49,6 +89,12 @@ func _on_button_pressed() -> void:
 	game_timer.stop()
 	game_timer.start(time)
 
+func _on_first_time_drop_off() -> void:
+	tutorial = true
+	tutorial_button.show()
+	tutorial_text_4.show()
+	get_tree().paused = true
+	
 
 func _on_game_timer_timeout() -> void:
 	continue_button.show()
@@ -70,7 +116,10 @@ func _on_game_timer_timeout() -> void:
 			man_spawner.spawn_delay = 0.5
 			man_spawner_3.show()
 			Utility.reset_level.emit()
-			max_people = 60
+			max_people = 75
+			red_drop_off.max_balance = 18
+			blue_drop_off.max_balance = 18
+			yellow_drop_off.max_balance = 18
 		4:
 			continue_button.hide()
 			game_over.show()
@@ -85,6 +134,22 @@ func _on_continue_button_pressed() -> void:
 
 func _on_tutorial_button_pressed() -> void:
 	if tutorial:
+		tutorial_step += 1
 		get_tree().paused = false
 		tutorial_button.hide()
 		tutorial_text_1.hide()
+		tutorial_text_2.hide()
+		tutorial_text_3.hide()
+		tutorial_text_4.hide()
+		
+		match tutorial_step:
+			2:
+				tutorial_button.show()
+				tutorial_text_2.show()
+				tutorial = true
+				get_tree().paused = true
+			3:
+				tutorial_button.show()
+				tutorial_text_3.show()
+				tutorial = true
+				get_tree().paused = true

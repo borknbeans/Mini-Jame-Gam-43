@@ -19,12 +19,16 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("select_paint_1"):
 		brush.color = 0
+		brush.color_changed.emit(0)
 	if Input.is_action_just_pressed("select_paint_2"):
 		brush.color = 1
+		brush.color_changed.emit(1)
 	if Input.is_action_just_pressed("select_paint_3"):
 		brush.color = 2
+		brush.color_changed.emit(2)
 	if Input.is_action_just_pressed("select_paint_4"):
 		brush.color = 3
+		brush.color_changed.emit(3)
 
 ## Called by the state machine when receiving unhandled input events.
 func handle_input(event: InputEvent) -> void:

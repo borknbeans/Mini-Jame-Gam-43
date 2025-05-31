@@ -70,6 +70,10 @@ func _on_body_entered(body: Node2D) -> void:
 	man.queue_free()
 	
 	last_body_entered.start()
+	
+	if Utility.first_time_drop_off:
+		Utility.first_time_drop_off = false
+		Utility.drop_off_tutorial_signal.emit()
 
 func shake() -> void:
 	sprite_2d.offset = sprite_2d.offset.slerp(shake_point, shake_weight)

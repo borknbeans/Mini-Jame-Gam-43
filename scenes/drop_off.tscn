@@ -78,7 +78,7 @@ bg_color = Color(0.338754, 0.692652, 0.356064, 1)
 [node name="DropOff" type="Area2D" groups=["drop_off"]]
 collision_mask = 2
 script = ExtResource("1_5sj5x")
-reduction_timer_length = 0.1
+reduction_timer_length = 0.05
 balance_reduction_amount = 0.2
 safe_color = Color(0.337255, 0.694118, 0.356863, 1)
 medium_danger_color = Color(0.801903, 0.440501, 0.195468, 1)
