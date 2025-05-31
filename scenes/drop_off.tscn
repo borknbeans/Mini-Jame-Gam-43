@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dleh4ud55go4k"]
+
+[ext_resource type="Script" uid="uid://dtheww6f0bkax" path="res://scripts/drop_off.gd" id="1_5sj5x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5sj5x"]
+
+[node name="DropOff" type="Area2D" groups=["drop_off"]]
+collision_mask = 2
+script = ExtResource("1_5sj5x")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.5, 2.5)
+shape = SubResource("CircleShape2D_5sj5x")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -18,7 +18,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 
 ## Called by the state machine on the engine's main loop tick.
 func physics_update(_delta: float) -> void:
-	if follow_point != Vector2.ZERO:
+	if man.follow_point != Vector2.ZERO:
 		finished.emit(FOLLOW)
 
 ## Called by the state machine before changing the active state. Use this function

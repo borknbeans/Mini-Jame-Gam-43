@@ -6,7 +6,6 @@ const WANDER: String = "ManStateWander"
 const FOLLOW: String = "ManStateFollow"
 
 var man: Man
-var follow_point: Vector2
 
 @onready var idle_timer: Timer = %IdleTimer
 

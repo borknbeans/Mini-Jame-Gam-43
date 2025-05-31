@@ -23,6 +23,7 @@ Utility="*res://scripts/util/Utility.gd"
 
 congregation_area=""
 paint_drop=""
+drop_off=""
 
 [input]
 

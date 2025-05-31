@@ -16,7 +16,7 @@ func physics_update(_delta: float) -> void:
 	
 	man.move_and_slide()
 	
-	if follow_point != Vector2.ZERO:
+	if man.follow_point != Vector2.ZERO:
 		finished.emit(FOLLOW)
 	if random_point.distance_to(man.position) < 1:
 		finished.emit(IDLE)
