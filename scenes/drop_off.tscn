@@ -1,11 +1,39 @@
-[gd_scene load_steps=11 format=3 uid="uid://dleh4ud55go4k"]
+[gd_scene load_steps=12 format=3 uid="uid://dleh4ud55go4k"]
 
 [ext_resource type="Script" uid="uid://dtheww6f0bkax" path="res://scripts/drop_off.gd" id="1_5sj5x"]
 [ext_resource type="Texture2D" uid="uid://dtox65iugkixo" path="res://assets/drop-off-red.png" id="2_8wjkr"]
+[ext_resource type="Texture2D" uid="uid://b2x3lxfawghvq" path="res://assets/drop-off-neutral.png" id="2_ctedf"]
 [ext_resource type="Texture2D" uid="uid://yuha51q7foce" path="res://assets/drop-off-yellow.png" id="3_ctedf"]
 [ext_resource type="Texture2D" uid="uid://cc4t4wbawv3u7" path="res://assets/drop-off-blue.png" id="4_bijp3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5sj5x"]
+
+[sub_resource type="Animation" id="Animation_ctedf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -64)]
+}
 
 [sub_resource type="Animation" id="Animation_8wjkr"]
 resource_name = "collect"
@@ -35,33 +63,6 @@ tracks/1/keys = {
 "values": [Vector2(0, -64), Vector2(0, -55.1), Vector2(0, -81), Vector2(0, -64)]
 }
 
-[sub_resource type="Animation" id="Animation_ctedf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -64)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bijp3"]
 _data = {
 &"RESET": SubResource("Animation_ctedf"),
@@ -77,21 +78,20 @@ bg_color = Color(0.338754, 0.692652, 0.356064, 1)
 [node name="DropOff" type="Area2D" groups=["drop_off"]]
 collision_mask = 2
 script = ExtResource("1_5sj5x")
-reduction_timer_length = 0.2
-balance_reduction_amount = 0.1
+reduction_timer_length = 0.1
+balance_reduction_amount = 0.2
 safe_color = Color(0.337255, 0.694118, 0.356863, 1)
 medium_danger_color = Color(0.801903, 0.440501, 0.195468, 1)
 danger_color = Color(0.833812, 0.173512, 0.185154, 1)
+neutral_drop_off = ExtResource("2_ctedf")
 red_drop_off = ExtResource("2_8wjkr")
 yellow_drop_off = ExtResource("3_ctedf")
 blue_drop_off = ExtResource("4_bijp3")
-shake_increment = 0.1
-max_shake_strength = 5
+shake_strength = 2.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -64)
-scale = Vector2(1, 1)
 texture = ExtResource("2_8wjkr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -116,7 +116,7 @@ allow_greater = true
 show_percentage = false
 
 [node name="LastBodyEntered" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.75
 one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -19,6 +19,9 @@ var follow_point: Vector2
 func _ready() -> void:
 	congregation_area_2d = get_tree().get_first_node_in_group("congregation_area")
 
+func _process(delta: float) -> void:
+	follow_point = _find_drop_off_for_color(color)
+
 func change_color(color_idx: int) -> void:
 	if color == color_idx:
 		return
@@ -37,7 +40,7 @@ func change_color(color_idx: int) -> void:
 func _find_drop_off_for_color(drop_off_color: int) -> Vector2:
 	var drop_offs = get_tree().get_nodes_in_group("drop_off")
 	for drop_off: DropOff in drop_offs:
-		if drop_off.color == self.color:
+		if drop_off.color == self.color && not drop_off.blocked:
 			return drop_off.position
 	
 	return Vector2.ZERO
