@@ -37,6 +37,8 @@ func _ready() -> void:
 	
 	shake_point = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * shake_strength
 	timer.start(reduction_timer_length)
+	
+	Utility.reset_level.connect(_on_reset_level)
 
 func _set_color() -> void:
 	if color == 1:
@@ -86,3 +88,7 @@ func _on_timer_timeout() -> void:
 	if balance <= 0:
 		blocked = false
 		_set_color()
+
+func _on_reset_level() -> void:
+	balance = 0
+	blocked = false

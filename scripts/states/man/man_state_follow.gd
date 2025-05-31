@@ -16,4 +16,4 @@ func physics_update(_delta: float) -> void:
 	if is_zero_approx(man.follow_point.distance_to(man.global_position)):
 		finished.emit(IDLE)
 	elif man.follow_point == Vector2.ZERO:
-		finished.emit(IDLE)
+		finished.emit(WANDER)

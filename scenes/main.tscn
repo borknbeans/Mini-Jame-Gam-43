@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnwb0roi37ay3"]
+[gd_scene load_steps=19 format=3 uid="uid://cnwb0roi37ay3"]
 
 [ext_resource type="Script" uid="uid://bq64bklemkfl1" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://sprmb7111vo7" path="res://scenes/man_spawner.tscn" id="2_0wfyh"]
@@ -6,6 +6,34 @@
 [ext_resource type="PackedScene" uid="uid://dleh4ud55go4k" path="res://scenes/drop_off.tscn" id="4_jyhfs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyhfs"]
+bg_color = Color(0.65098, 0.65098, 0.65098, 0.227451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jyhfs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbgi4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tefeu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6xl0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tipki"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_85g3d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_choun"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ya4ey"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eb6dy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_trceg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a8y0u"]
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -17,10 +45,20 @@ script = ExtResource("1_0wfyh")
 unique_name_in_owner = true
 y_sort_enabled = true
 
+[node name="ManSpawner3" parent="." instance=ExtResource("2_0wfyh")]
+visible = false
+position = Vector2(300, 315)
+spawn_delay = 0.5
+
+[node name="ManSpawner2" parent="." instance=ExtResource("2_0wfyh")]
+visible = false
+position = Vector2(865, 316)
+spawn_delay = 0.5
+
 [node name="ManSpawner" parent="." instance=ExtResource("2_0wfyh")]
 z_index = -20
 position = Vector2(589, 314)
-spawn_delay = 0.5
+spawn_delay = 0.75
 
 [node name="CongregationArea2D" type="Area2D" parent="." groups=["congregation_area"]]
 unique_name_in_owner = true
@@ -36,5 +74,102 @@ position = Vector2(76, 150)
 color = 1
 
 [node name="YellowDropOff" parent="." instance=ExtResource("4_jyhfs")]
+visible = false
 position = Vector2(1076, 152)
 color = 2
+
+[node name="BlueDropOff" parent="." instance=ExtResource("4_jyhfs")]
+visible = false
+position = Vector2(77, 610)
+color = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 169.0
+offset_top = 2.0
+offset_right = 969.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_jyhfs")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tbgi4")
+show_percentage = false
+
+[node name="Button" type="Button" parent="."]
+process_mode = 2
+visible = false
+z_index = 20
+offset_left = 567.0
+offset_top = 312.0
+offset_right = 617.0
+offset_bottom = 343.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Retry"
+
+[node name="ContinueButton" type="Button" parent="."]
+process_mode = 2
+visible = false
+offset_left = 553.0
+offset_top = 314.0
+offset_right = 632.0
+offset_bottom = 345.0
+text = "Continue"
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[node name="TimerLabel" type="Label" parent="."]
+z_index = 20
+offset_left = 556.0
+offset_top = 28.0
+offset_right = 596.0
+offset_bottom = 51.0
+text = "30"
+horizontal_alignment = 1
+
+[node name="GameOver" type="Label" parent="."]
+visible = false
+offset_left = 562.0
+offset_top = 298.0
+offset_right = 628.0
+offset_bottom = 321.0
+text = "You win!"
+
+[node name="TutorialText1" type="Label" parent="."]
+visible = false
+offset_left = 318.0
+offset_top = 59.0
+offset_right = 855.0
+offset_bottom = 108.0
+text = "As the little guys spawn, this bar fills up. If it fills completely, you lose!
+(click to continue)"
+horizontal_alignment = 1
+
+[node name="TutorialButton" type="Button" parent="."]
+process_mode = 2
+visible = false
+offset_left = -127.0
+offset_top = -45.0
+offset_right = 1373.0
+offset_bottom = 755.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jyhfs")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_tbgi4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tefeu")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_o6xl0")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_tipki")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_85g3d")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_choun")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ya4ey")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_eb6dy")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_trceg")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_a8y0u")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
+[connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]

@@ -1,5 +1,8 @@
 extends Node
 
+signal reset_level
+signal level_change(level: int)
+
 enum COLORS {
 	NEUTRAL,
 	RED,

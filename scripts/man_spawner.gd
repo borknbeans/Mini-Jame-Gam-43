@@ -1,3 +1,4 @@
+class_name ManSpawner
 extends Node2D
 
 @onready var man_container: Node2D = %ManContainer
@@ -10,6 +11,9 @@ func _ready() -> void:
 	spawn_timer.start(spawn_delay)
 
 func _on_spawn_timer_timeout() -> void:
+	if not visible:
+		return
+	
 	var man: Man = man_scene.instantiate()
 	
 	man.position = position
