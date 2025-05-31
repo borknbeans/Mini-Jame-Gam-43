@@ -16,6 +16,16 @@ func _ready() -> void:
 	brush = owner as Brush
 	assert(brush != null, "The BrushState state type must be used only in the Brush scene. It needs the owner to be a Brush node.")
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("select_paint_1"):
+		brush.color = 0
+	if Input.is_action_just_pressed("select_paint_2"):
+		brush.color = 1
+	if Input.is_action_just_pressed("select_paint_3"):
+		brush.color = 2
+	if Input.is_action_just_pressed("select_paint_4"):
+		brush.color = 3
+
 ## Called by the state machine when receiving unhandled input events.
 func handle_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

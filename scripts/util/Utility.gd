@@ -8,7 +8,7 @@ enum COLORS {
 }
 
 func get_color_obj(color: int) -> Color:
-	var color_value: Color = Color.from_rgba8(255, 255, 255, 255)
+	var color_value: Color = Color.from_rgba8(53, 53, 53, 255)
 	
 	match (color):
 		COLORS.RED:
@@ -16,6 +16,6 @@ func get_color_obj(color: int) -> Color:
 		COLORS.BLUE:
 			color_value = Color.from_rgba8(99, 155, 255)
 		COLORS.YELLOW:
-			color_value = Color.from_rgba8(251, 242, 54)
+			color_value = Color.from_rgba8(250, 242, 54)
 	
 	return color_value
