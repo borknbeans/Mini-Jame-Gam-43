@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cqdns67khhwch"]
+[gd_scene load_steps=17 format=3 uid="uid://cqdns67khhwch"]
 
 [ext_resource type="Script" uid="uid://bmn47mrsajm1s" path="res://scripts/man.gd" id="1_pgnoa"]
 [ext_resource type="Script" uid="uid://bvghd0v3ewt2o" path="res://scripts/util/state_machine.gd" id="1_v8st8"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://dvou3e654f75n" path="res://assets/man-blue.png" id="3_cg0sc"]
 [ext_resource type="Script" uid="uid://bjpcu3gqnboyo" path="res://scripts/states/man/man_state_follow.gd" id="3_pgnoa"]
 [ext_resource type="Texture2D" uid="uid://dsytqcgrehcey" path="res://assets/man-yellow.png" id="4_1gcr3"]
+
+[sub_resource type="Curve" id="Curve_rpmwl"]
+_data = [Vector2(0.0170455, 1), 0.0, 0.0, 0, 0, Vector2(0.977273, 0.47191), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Animation" id="Animation_ogi77"]
 length = 0.001
@@ -115,6 +119,28 @@ blue_texture = ExtResource("3_cg0sc")
 yellow_texture = ExtResource("4_1gcr3")
 metadata/_edit_group_ = true
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 10
+position = Vector2(0, -32)
+emitting = false
+amount = 15
+lifetime = 0.45
+one_shot = true
+explosiveness = 0.64
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+linear_accel_min = -84.84
+linear_accel_max = -34.34
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_rpmwl")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_6qbmn")
@@ -133,6 +159,7 @@ position = Vector2(0, -32)
 texture = ExtResource("2_reudx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -31)
 shape = SubResource("CapsuleShape2D_ogi77")
 
