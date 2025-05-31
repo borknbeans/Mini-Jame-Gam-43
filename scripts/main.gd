@@ -22,6 +22,7 @@ extends Node2D
 @onready var tutorial_text_2: Label = $TutorialText2
 @onready var tutorial_text_3: Label = $TutorialText3
 @onready var tutorial_text_4: Label = $TutorialText4
+@onready var level_win_sound: AudioStreamPlayer2D = $LevelWinSound
 
 var max_people: int = 25
 var time: int = 30
@@ -102,6 +103,7 @@ func _on_game_timer_timeout() -> void:
 	
 	level += 1
 	Utility.level_change.emit(level)
+	level_win_sound.play()
 	
 	match (level):
 		2:

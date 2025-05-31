@@ -31,6 +31,8 @@ var blocked: bool
 @onready var timer: Timer = $Timer
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var last_body_entered: Timer = $LastBodyEntered
+@onready var pop_audio: AudioStreamPlayer2D = $PopAudio
+@onready var working_audio: AudioStreamPlayer2D = $WorkingAudio
 
 func _ready() -> void:
 	_set_color()
@@ -66,8 +68,12 @@ func _on_body_entered(body: Node2D) -> void:
 	if balance >= max_balance:
 		blocked = true
 		sprite_2d.texture = neutral_drop_off
+		working_audio.pitch_scale = randf_range(0.8, 1.2)
+		working_audio.play()
 	
 	man.queue_free()
+	pop_audio.pitch_scale = randf_range(0.8, 1.2)
+	pop_audio.play()
 	
 	last_body_entered.start()
 	
@@ -92,6 +98,7 @@ func _on_timer_timeout() -> void:
 	if balance <= 0:
 		blocked = false
 		_set_color()
+		working_audio.stop()
 
 func _on_reset_level() -> void:
 	balance = 0

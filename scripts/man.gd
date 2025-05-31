@@ -12,6 +12,7 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
+@onready var color_change_sound: AudioStreamPlayer2D = $ColorChangeSound
 
 var congregation_area_2d: Area2D
 var color: int
@@ -38,6 +39,9 @@ func change_color(color_idx: int) -> void:
 			sprite_2d.texture = yellow_texture
 	color = color_idx
 	follow_point = _find_drop_off_for_color(color)
+	
+	color_change_sound.pitch_scale = randf_range(0.8, 1.2)
+	color_change_sound.play()
 	
 	var temp: Color = Utility.get_color_obj(color)
 	cpu_particles_2d.color = Color(temp.r - 0.1, temp.g - 0.1, temp.b - 0.1)

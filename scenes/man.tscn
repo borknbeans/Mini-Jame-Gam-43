@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cqdns67khhwch"]
+[gd_scene load_steps=18 format=3 uid="uid://cqdns67khhwch"]
 
 [ext_resource type="Script" uid="uid://bmn47mrsajm1s" path="res://scripts/man.gd" id="1_pgnoa"]
 [ext_resource type="Script" uid="uid://bvghd0v3ewt2o" path="res://scripts/util/state_machine.gd" id="1_v8st8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dvou3e654f75n" path="res://assets/man-blue.png" id="3_cg0sc"]
 [ext_resource type="Script" uid="uid://bjpcu3gqnboyo" path="res://scripts/states/man/man_state_follow.gd" id="3_pgnoa"]
 [ext_resource type="Texture2D" uid="uid://dsytqcgrehcey" path="res://assets/man-yellow.png" id="4_1gcr3"]
+[ext_resource type="AudioStream" uid="uid://5bfrfr3cea5" path="res://assets/audio/swoosh-sound-effect-for-fight-scenes-or-transitions-1-149889.mp3" id="6_cg0sc"]
 
 [sub_resource type="Curve" id="Curve_rpmwl"]
 _data = [Vector2(0.0170455, 1), 0.0, 0.0, 0, 0, Vector2(0.977273, 0.47191), 0.0, 0.0, 0, 0]
@@ -166,6 +167,9 @@ shape = SubResource("CapsuleShape2D_ogi77")
 [node name="IdleTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="ColorChangeSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_cg0sc")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("1_v8st8")

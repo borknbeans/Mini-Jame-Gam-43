@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://dleh4ud55go4k"]
+[gd_scene load_steps=14 format=3 uid="uid://dleh4ud55go4k"]
 
 [ext_resource type="Script" uid="uid://dtheww6f0bkax" path="res://scripts/drop_off.gd" id="1_5sj5x"]
 [ext_resource type="Texture2D" uid="uid://dtox65iugkixo" path="res://assets/drop-off-red.png" id="2_8wjkr"]
 [ext_resource type="Texture2D" uid="uid://b2x3lxfawghvq" path="res://assets/drop-off-neutral.png" id="2_ctedf"]
 [ext_resource type="Texture2D" uid="uid://yuha51q7foce" path="res://assets/drop-off-yellow.png" id="3_ctedf"]
 [ext_resource type="Texture2D" uid="uid://cc4t4wbawv3u7" path="res://assets/drop-off-blue.png" id="4_bijp3"]
+[ext_resource type="AudioStream" uid="uid://cmu6h30a3auc5" path="res://assets/audio/pop1.wav" id="6_bijp3"]
+[ext_resource type="AudioStream" uid="uid://beyxqg0x24sv1" path="res://assets/audio/machine-people-working-31337.mp3" id="7_gsgdb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5sj5x"]
 
@@ -118,6 +120,12 @@ show_percentage = false
 [node name="LastBodyEntered" type="Timer" parent="."]
 wait_time = 0.75
 one_shot = true
+
+[node name="PopAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_bijp3")
+
+[node name="WorkingAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_gsgdb")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqxxfterquolf"]
+[gd_scene load_steps=9 format=3 uid="uid://cqxxfterquolf"]
 
 [ext_resource type="Script" uid="uid://d4dt55uatsokn" path="res://scripts/brush.gd" id="1_taygo"]
 [ext_resource type="PackedScene" uid="uid://bqrh36tcfm4te" path="res://scenes/paint_drop.tscn" id="2_es1qv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://o52kgs2dkdut" path="res://scripts/states/brush/brush_state_disabled.gd" id="3_2fyin"]
 [ext_resource type="Script" uid="uid://uo2si2ftx4ev" path="res://scripts/states/brush/brush_state_hover.gd" id="4_es1qv"]
 [ext_resource type="Script" uid="uid://dj45ijpo5xug" path="res://scripts/states/brush/brush_state_paint.gd" id="5_0xkkf"]
+[ext_resource type="AudioStream" uid="uid://bk8lr3gx28b1i" path="res://assets/audio/pop5.wav" id="7_0xkkf"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_taygo"]
 
@@ -39,3 +40,6 @@ metadata/_custom_type_script = "uid://o52kgs2dkdut"
 [node name="BrushStatePaint" type="Node" parent="StateMachine"]
 script = ExtResource("5_0xkkf")
 metadata/_custom_type_script = "uid://dj45ijpo5xug"
+
+[node name="ChangeBrushAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_0xkkf")
