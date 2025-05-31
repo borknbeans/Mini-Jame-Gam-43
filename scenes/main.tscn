@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://cnwb0roi37ay3"]
+[gd_scene load_steps=22 format=3 uid="uid://cnwb0roi37ay3"]
 
 [ext_resource type="Script" uid="uid://bq64bklemkfl1" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://sprmb7111vo7" path="res://scenes/man_spawner.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://cqxxfterquolf" path="res://scenes/brush.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://dleh4ud55go4k" path="res://scenes/drop_off.tscn" id="4_jyhfs"]
 [ext_resource type="AudioStream" uid="uid://du2i8fmfqrfmx" path="res://assets/audio/marimba-win-f-2-209688.mp3" id="5_tbgi4"]
+[ext_resource type="FontFile" uid="uid://bet8oj6keskhn" path="res://assets/OpenSans-VariableFont_wdth,wght.ttf" id="5_tefeu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
 
@@ -111,6 +112,7 @@ offset_right = 624.095
 offset_bottom = 342.73
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("5_tefeu")
 text = "Retry"
 
 [node name="ContinueButton" type="Button" parent="."]
@@ -121,6 +123,7 @@ offset_left = 531.0
 offset_top = 304.0
 offset_right = 652.275
 offset_bottom = 351.03
+theme_override_fonts/font = ExtResource("5_tefeu")
 text = "Continue"
 
 [node name="GameTimer" type="Timer" parent="."]
@@ -133,16 +136,19 @@ offset_left = 556.0
 offset_top = 28.0
 offset_right = 596.0
 offset_bottom = 51.0
+theme_override_fonts/font = ExtResource("5_tefeu")
 text = "30"
 horizontal_alignment = 1
 
 [node name="GameOver" type="Label" parent="."]
 visible = false
 z_index = 20
-offset_left = 562.0
-offset_top = 298.0
-offset_right = 628.0
-offset_bottom = 321.0
+offset_left = 386.0
+offset_top = 7.0
+offset_right = 779.0
+offset_bottom = 144.0
+theme_override_fonts/font = ExtResource("5_tefeu")
+theme_override_font_sizes/font_size = 100
 text = "You win!"
 
 [node name="TutorialText1" type="Label" parent="."]
@@ -152,6 +158,7 @@ offset_left = 318.0
 offset_top = 59.0
 offset_right = 855.0
 offset_bottom = 108.0
+theme_override_fonts/font = ExtResource("5_tefeu")
 text = "As the little guys spawn, this bar fills up. If it fills completely, you lose!
 (click to continue)"
 horizontal_alignment = 1
@@ -163,6 +170,7 @@ offset_left = 423.0
 offset_top = 519.0
 offset_right = 733.0
 offset_bottom = 568.0
+theme_override_fonts/font = ExtResource("5_tefeu")
 text = "Press 1-4 to switch between paint colors
 (click anywhere to continue)"
 horizontal_alignment = 1
@@ -174,6 +182,7 @@ offset_left = 298.0
 offset_top = 70.0
 offset_right = 844.0
 offset_bottom = 119.0
+theme_override_fonts/font = ExtResource("5_tefeu")
 text = "Click anywhere to paint. Painted guys will run to their colored building!
 (click anywhere to continue)"
 horizontal_alignment = 1
@@ -185,6 +194,7 @@ offset_left = -41.0
 offset_top = 176.0
 offset_right = 505.0
 offset_bottom = 225.0
+theme_override_fonts/font = ExtResource("5_tefeu")
 text = "Filling up a building too quickly will put it on cooldown!
 (click anywhere to continue)"
 horizontal_alignment = 1
