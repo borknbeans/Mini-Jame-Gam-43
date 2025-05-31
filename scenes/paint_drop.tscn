@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqrh36tcfm4te"]
+
+[ext_resource type="Script" uid="uid://d3u0mnntxsiy7" path="res://scripts/paint_drop.gd" id="1_lkc13"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_lkc13"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lkc13"]
+radius = 38.0526
+
+[node name="PaintDrop" type="Node2D" groups=["paint_drop"]]
+script = ExtResource("1_lkc13")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+z_index = -11
+scale = Vector2(75, 75)
+mesh = SubResource("SphereMesh_lkc13")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_lkc13")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

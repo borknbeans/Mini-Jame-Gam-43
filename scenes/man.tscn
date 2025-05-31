@@ -106,7 +106,7 @@ radius = 12.0
 height = 64.0
 
 [node name="Man" type="CharacterBody2D"]
-collision_layer = 0
+collision_layer = 2
 script = ExtResource("1_pgnoa")
 follow_speed = 150.0
 neutral_texture = ExtResource("2_reudx")
@@ -133,7 +133,6 @@ position = Vector2(0, -32)
 texture = ExtResource("2_reudx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -31)
 shape = SubResource("CapsuleShape2D_ogi77")
 

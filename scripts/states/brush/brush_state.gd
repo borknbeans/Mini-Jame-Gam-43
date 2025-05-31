@@ -1,0 +1,24 @@
+class_name BrushState
+extends State
+
+const DISABLED: String = "BrushStateDisabled"
+const HOVER: String = "BrushStateHover"
+const PAINT: String = "BrushStatePaint"
+
+var brush: Brush
+var mouse_position: Vector2
+
+@onready var mesh_instance_2d: MeshInstance2D = %MeshInstance2D
+@onready var paint_spawn_delay: Timer = %PaintSpawnDelay
+
+func _ready() -> void:
+	await owner.ready
+	brush = owner as Brush
+	assert(brush != null, "The BrushState state type must be used only in the Brush scene. It needs the owner to be a Brush node.")
+
+## Called by the state machine when receiving unhandled input events.
+func handle_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		var mouse_move_event: InputEventMouseMotion = event as InputEventMouseMotion
+		mouse_position = mouse_move_event.global_position
+		brush.position = mouse_position

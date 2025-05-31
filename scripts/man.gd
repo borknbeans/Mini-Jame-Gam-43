@@ -13,11 +13,14 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 var congregation_area_2d: Area2D
+var color: int
 
 func _ready() -> void:
 	congregation_area_2d = get_tree().get_first_node_in_group("congregation_area")
 
 func change_color(color_idx: int) -> void:
+	if color == color_idx:
+		return
 	match (color_idx):
 		Utility.COLORS.NEUTRAL:
 			sprite_2d.texture = neutral_texture
@@ -27,3 +30,4 @@ func change_color(color_idx: int) -> void:
 			sprite_2d.texture = blue_texture
 		Utility.COLORS.YELLOW:
 			sprite_2d.texture = yellow_texture
+	color = color_idx
