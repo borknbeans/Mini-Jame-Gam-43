@@ -23,6 +23,7 @@ extends Node2D
 @onready var tutorial_text_3: Label = $TutorialText3
 @onready var tutorial_text_4: Label = $TutorialText4
 @onready var level_win_sound: AudioStreamPlayer2D = $LevelWinSound
+@onready var ui_sound: AudioStreamPlayer2D = $UiSound
 
 var max_people: int = 25
 var time: int = 30
@@ -89,6 +90,7 @@ func _on_button_pressed() -> void:
 	get_tree().paused = false
 	game_timer.stop()
 	game_timer.start(time)
+	ui_sound.play()
 
 func _on_first_time_drop_off() -> void:
 	tutorial = true
@@ -132,6 +134,7 @@ func _on_game_timer_timeout() -> void:
 func _on_continue_button_pressed() -> void:
 	continue_button.hide()
 	get_tree().paused = false
+	ui_sound.play()
 
 
 func _on_tutorial_button_pressed() -> void:
@@ -143,6 +146,8 @@ func _on_tutorial_button_pressed() -> void:
 		tutorial_text_2.hide()
 		tutorial_text_3.hide()
 		tutorial_text_4.hide()
+		
+		ui_sound.play()
 		
 		match tutorial_step:
 			2:

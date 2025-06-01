@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cnwb0roi37ay3"]
+[gd_scene load_steps=23 format=3 uid="uid://cnwb0roi37ay3"]
 
 [ext_resource type="Script" uid="uid://bq64bklemkfl1" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://sprmb7111vo7" path="res://scenes/man_spawner.tscn" id="2_0wfyh"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dleh4ud55go4k" path="res://scenes/drop_off.tscn" id="4_jyhfs"]
 [ext_resource type="AudioStream" uid="uid://du2i8fmfqrfmx" path="res://assets/audio/marimba-win-f-2-209688.mp3" id="5_tbgi4"]
 [ext_resource type="FontFile" uid="uid://bet8oj6keskhn" path="res://assets/OpenSans-VariableFont_wdth,wght.ttf" id="5_tefeu"]
+[ext_resource type="AudioStream" uid="uid://dxgkbicrn42cx" path="res://assets/audio/ui-pop-sound-316482.mp3" id="7_o6xl0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
 
@@ -244,6 +245,10 @@ mesh = SubResource("SphereMesh_jyhfs")
 [node name="LevelWinSound" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("5_tbgi4")
+
+[node name="UiSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("7_o6xl0")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

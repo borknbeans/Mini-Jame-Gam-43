@@ -1,5 +1,6 @@
 extends Node
 
+signal game_start
 signal reset_level
 signal level_change(level: int)
 signal drop_off_tutorial_signal

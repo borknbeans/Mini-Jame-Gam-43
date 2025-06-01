@@ -7,12 +7,17 @@ extends Node2D
 @export var man_scene: PackedScene
 @export var spawn_delay: float
 
+@export var limit: int = -1
+
 func _ready() -> void:
 	spawn_timer.start(spawn_delay)
 
 func _on_spawn_timer_timeout() -> void:
-	if not visible:
+	if not visible or limit == 0:
 		return
+	
+	if limit > 0:
+		limit -= 1
 	
 	var man: Man = man_scene.instantiate()
 	

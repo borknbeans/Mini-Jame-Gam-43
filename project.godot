@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Mini Jame Gam 43"
-run/main_scene="uid://cnwb0roi37ay3"
+run/main_scene="uid://bj1n868825ixa"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
